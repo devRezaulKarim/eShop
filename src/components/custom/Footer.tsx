@@ -52,7 +52,7 @@ const Footer = () => {
     ],
   };
   return (
-    <footer className="container max-w-7xl mx-auto ">
+    <footer className="container">
       <div className="grid grid-cols-1 lg:grid-cols-6 py-10 px-4 lg:px-0">
         <div className="col-span-2 lg:pr-10 ">
           <Link

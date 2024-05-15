@@ -4,6 +4,7 @@ import { Input } from "../ui/input";
 import { IoSearch } from "react-icons/io5";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { IoPersonCircleOutline } from "react-icons/io5";
+import { FaRegHeart } from "react-icons/fa6";
 
 import { useState } from "react";
 import MobileNavLinks from "./MobileNavLinks";
@@ -21,8 +22,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="container mx-auto max-w-7xl py-2 lg:py-4">
-      <div className="max-w-7xl mx-auto flex items-center gap-8 relative">
+    <nav className="container py-2 lg:py-4">
+      <div className="flex items-center gap-6 lg:gap-10 relative">
         <div className="lg:hidden">
           <MobileNavLinks
             isOpenMobileNavLinks={isOpenMobileNavLinks}
@@ -38,7 +39,7 @@ const Navbar = () => {
             eSHOP
           </Link>
         </div>
-        <ul className="lg:flex gap-4 hidden">
+        <ul className="lg:flex gap-6 hidden">
           {navLinks.map((link) => (
             <li key={link}>
               <Link className="uppercase text-sm" href={`/${link}`}>
@@ -47,7 +48,7 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-        <div className="flex items-center gap-4 lg:flex-grow ml-auto lg:ml-0">
+        <div className="flex items-center gap-4 lg:gap-6 lg:flex-grow ml-auto lg:ml-0">
           <form action="" className="relative flex-grow hidden lg:block">
             <Input
               type="text"
@@ -66,6 +67,9 @@ const Navbar = () => {
             <IoSearch />
           </button>
 
+          <Link href={"/cart"} className="text-xl">
+            <FaRegHeart />
+          </Link>
           <Link href={"/cart"} className="text-xl">
             <MdOutlineShoppingCart />
           </Link>
