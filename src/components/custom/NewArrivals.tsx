@@ -1,6 +1,8 @@
-import Image, { StaticImageData } from "next/image";
+import { StaticImageData } from "next/image";
 import cardImg from "@/assets/t-shirt.jpg";
 import ProductCard from "./ProductCard";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 interface CardItems {
   image: StaticImageData;
@@ -45,6 +47,14 @@ const NewArrivals = () => {
           <ProductCard key={card.title} cardItem={card} />
         ))}
       </div>
+      <Link href={"#"}>
+        <Button
+          variant={"outline"}
+          className="px-10 rounded-full mt-8 w-4/5 block mx-auto lg:w-auto"
+        >
+          View All
+        </Button>
+      </Link>
     </section>
   );
 };
