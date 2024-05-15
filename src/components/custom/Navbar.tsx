@@ -21,8 +21,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="container mx-auto max-w-5x py-2 lg:py-4">
-      <div className="max-w-5xl mx-auto flex items-center gap-8 relative">
+    <nav className="container mx-auto max-w-7xl py-2 lg:py-4">
+      <div className="max-w-7xl mx-auto flex items-center gap-8 relative">
         <div className="lg:hidden">
           <MobileNavLinks
             isOpenMobileNavLinks={isOpenMobileNavLinks}
