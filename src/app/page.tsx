@@ -1,5 +1,9 @@
-import Image from "next/image";
+import HomePage from "@/components/Pages/HomePage";
 
 export default function Home() {
-  return <main className="container mx-auto">Home page</main>;
+  return (
+    <main>
+      <HomePage />
+    </main>
+  );
 }

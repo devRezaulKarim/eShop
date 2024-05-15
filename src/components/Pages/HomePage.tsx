@@ -1,5 +1,11 @@
+import Banner from "../custom/Banner";
+
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <section>
+      <Banner />
+    </section>
+  );
 };
 
 export default HomePage;
