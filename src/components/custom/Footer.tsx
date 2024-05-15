@@ -4,6 +4,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import FooterLinks from "./FooterLinks";
+import Newsletter from "./Newsletter";
 
 type footerLink = {
   url: string;
@@ -53,6 +54,7 @@ const Footer = () => {
   };
   return (
     <footer className="container">
+      <Newsletter />
       <div className="grid grid-cols-1 lg:grid-cols-6 py-10 px-4 lg:px-0">
         <div className="col-span-2 lg:pr-10 ">
           <Link
