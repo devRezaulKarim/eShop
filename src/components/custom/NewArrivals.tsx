@@ -47,14 +47,14 @@ const NewArrivals = () => {
           <ProductCard key={card.title} cardItem={card} />
         ))}
       </div>
-      <Link href={"#"}>
-        <Button
-          variant={"outline"}
-          className="px-10 rounded-full mt-8 w-4/5 block mx-auto lg:w-auto"
-        >
-          View All
-        </Button>
-      </Link>
+
+      <div className="mt-8 text-center w-full">
+        <Link className=" inline-block " href={"#"}>
+          <Button variant={"outline"} className="px-10 rounded-full">
+            View All
+          </Button>
+        </Link>
+      </div>
     </section>
   );
 };
