@@ -40,9 +40,7 @@ const ProductCard = ({ cardItem }: CardItemProp) => {
         <CardContent>
           <h4>{title}</h4>
           <div className="flex items-center gap-4">
-            <div className="flex gap-1 text-yellow-500">
-              {renderStars(rating)}
-            </div>
+            <div className="flex gap-1">{renderStars(rating)}</div>
             <div>
               <span>{rating}</span>
               <span className="text-gray-500">/5</span>
