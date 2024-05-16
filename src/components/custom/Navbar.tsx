@@ -5,14 +5,24 @@ import { IoSearch } from "react-icons/io5";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa6";
+import { IoMdLogIn } from "react-icons/io";
 
 import { useState } from "react";
 import MobileNavLinks from "./MobileNavLinks";
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const Navbar = () => {
   const [isOpenMobileSearch, setIsOpenMobileSearch] = useState<boolean>(false);
   const [isOpenMobileNavLinks, setIsOpenMobileNavLinks] =
     useState<boolean>(false);
+
+  const [user, setUser] = useState<boolean>(false);
 
   const navLinks: string[] = ["shop", "on sale", "new arrivals", "brands"];
 
@@ -67,15 +77,60 @@ const Navbar = () => {
             <IoSearch />
           </button>
 
-          <Link href={"/cart"} className="text-xl">
-            <FaRegHeart />
-          </Link>
-          <Link href={"/cart"} className="text-xl">
-            <MdOutlineShoppingCart />
-          </Link>
-          <Link href={"#"} className="text-xl">
-            <IoPersonCircleOutline />
-          </Link>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <Link href={"/favorite"} className="text-xl">
+                  <FaRegHeart />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent side="left">
+                <p>Favorite</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                {" "}
+                <Link href={"/cart"} className="text-xl">
+                  <MdOutlineShoppingCart />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent side="left">
+                <p>Cart</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+
+          {user ? (
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Link href={"#"} className="text-xl">
+                    <IoPersonCircleOutline />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent side="left">
+                  <p>Profile</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          ) : (
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Link href={"/login"} className="text-xl">
+                    <IoMdLogIn className="rotate-180" />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent side="left">
+                  <p>Login</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          )}
         </div>
       </div>
 
