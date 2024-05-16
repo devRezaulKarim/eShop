@@ -1,4 +1,9 @@
-import styleImage from "@/assets/t-shirt.jpg";
+import casual from "@/assets/dress-style/Casual.png";
+import formal from "@/assets/dress-style/Formal.png";
+import party from "@/assets/dress-style/party.png";
+import traditional from "@/assets/dress-style/traditional.png";
+import vacation from "@/assets/dress-style/Vacation.png";
+import sports from "@/assets/dress-style/sports.png";
 import { StaticImageData } from "next/image";
 import StyleCard from "./StyleCard";
 
@@ -10,19 +15,27 @@ interface Style {
 const BrowseByDressStyle = () => {
   const styles: Style[] = [
     {
-      image: styleImage,
+      image: casual,
       title: "Casual",
     },
     {
-      image: styleImage,
+      image: formal,
       title: "Formal",
     },
     {
-      image: styleImage,
+      image: party,
       title: "Party",
     },
     {
-      image: styleImage,
+      image: traditional,
+      title: "Traditional",
+    },
+    {
+      image: vacation,
+      title: "Vacation",
+    },
+    {
+      image: sports,
       title: "Sports",
     },
   ];
@@ -32,9 +45,9 @@ const BrowseByDressStyle = () => {
         <h2 className="uppercase text-3xl lg:text-4xl text-center font-black">
           Browse by dress style
         </h2>
-        <div className="mt-6 pb-8 grid grid-cols-1 lg:grid-cols-4 gap-4">
-          {styles.map((style) => (
-            <StyleCard key={style.title} style={style} />
+        <div className="mt-6 pb-8 grid grid-cols-1 lg:grid-cols-5 gap-4">
+          {styles.map((style, i) => (
+            <StyleCard key={style.title} id={i} style={style} />
           ))}
         </div>
       </div>

@@ -16,17 +16,33 @@ interface Style {
 }
 type StyleCardProp = {
   style: Style;
+  id: number;
 };
-const StyleCard = ({ style }: StyleCardProp) => {
+const StyleCard = ({ style, id }: StyleCardProp) => {
   return (
-    <Link href={"#"}>
+    <Link
+      className={`${
+        id === 0
+          ? "lg:col-span-2"
+          : id === 1
+          ? "lg:col-span-1"
+          : id === 2
+          ? "lg:col-span-2"
+          : id === 3
+          ? "lg:col-span-1"
+          : id === 4
+          ? "lg:col-span-2"
+          : "lg:col-span-2"
+      }`}
+      href={"#"}
+    >
       <Card>
-        <CardHeader>
-          <CardTitle className="text-2xl">{style.title}</CardTitle>
-        </CardHeader>
-        <CardContent>
+        <CardContent className="h-48 overflow-hidden relative">
+          <h2 className="absolute top-5 left-5 text-2xl font-bold">
+            {style.title}
+          </h2>
           <Image
-            className="mx-auto"
+            className="ml-auto"
             height={250}
             src={style.image}
             alt="style"

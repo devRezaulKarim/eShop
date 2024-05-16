@@ -1,6 +1,5 @@
 const Testimonials = () => {
-  return <div>Testimonials</div>;
+  return <section className="container py-10">Testimonials</section>;
 };
 
 export default Testimonials;
- 
