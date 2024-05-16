@@ -1,5 +1,17 @@
-import Image from "next/image";
+import Banner from "@/components/custom/Banner";
+import Brands from "@/components/custom/Brands";
+import BrowseByDressStyle from "@/components/custom/BrowseByDressStyle";
+import NewArrivals from "@/components/custom/NewArrivals";
+import TopSelling from "@/components/custom/TopSelling";
 
 export default function Home() {
-  return <main className="container mx-auto">Home page</main>;
+  return (
+    <main>
+      <Banner />
+      <Brands />
+      <NewArrivals />
+      <TopSelling />
+      <BrowseByDressStyle />
+    </main>
+  );
 }
