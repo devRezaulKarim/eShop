@@ -3,13 +3,17 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { useState } from "react";
 
 type Inputs = {
+  fullName: string;
+  email: string;
   userName: string;
   password: string;
+  confirmPassword: string;
 };
-
-const LoginForm = () => {
+const SignupForm = () => {
+  const [isPassMatched, setIsPassMatched] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
@@ -18,24 +22,48 @@ const LoginForm = () => {
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log(data);
-    console.log(errors.password);
   };
 
   return (
     <fieldset className="border-2 border-black p-10 rounded-2xl">
-      <legend className="text-center text-3xl font-semibold px-2">Login</legend>
+      <legend className="text-center text-3xl font-semibold px-2">
+        Sign up
+      </legend>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="userName">Username:</label>
+        <label htmlFor="fullName">Full name:</label>
+        <Input
+          className={`${errors.fullName && "border-red-400"}`}
+          id="fullName"
+          type="text"
+          placeholder="Your full name"
+          {...register("fullName")}
+        />
+
+        <label className="mt-4 block" htmlFor="userName">
+          Username:
+        </label>
         <Input
           className={`${errors.userName && "border-red-400"}`}
           id="userName"
           type="text"
-          placeholder="Email or username"
+          placeholder="Username"
           {...register("userName", { required: true })}
         />
         {errors.userName && (
           <p className="text-red-400">This field is required</p>
         )}
+
+        <label className="mt-4 block" htmlFor="userName">
+          Email:
+        </label>
+        <Input
+          className={`${errors.email && "border-red-400"}`}
+          id="email"
+          type="email"
+          placeholder="Email"
+          {...register("email", { required: true })}
+        />
+        {errors.email && <p className="text-red-400">This field is required</p>}
 
         <label className="mt-4 block" htmlFor="password">
           Password:
@@ -52,15 +80,34 @@ const LoginForm = () => {
         {errors.password && (
           <p className="text-red-400">This field is required</p>
         )}
+        <label className="mt-4 block" htmlFor="confirmPassword">
+          Confirm Password:
+        </label>
+        <Input
+          className={`${
+            (errors.confirmPassword || isPassMatched) && "border-red-400"
+          }`}
+          id="confirmPassword"
+          type="password"
+          placeholder="Confirm Password"
+          minLength={8}
+          {...register("confirmPassword", { required: true })}
+        />
+        {isPassMatched && (
+          <p className="text-red-400">Password doesn&#39;t match</p>
+        )}
+        {errors.confirmPassword && (
+          <p className="text-red-400">This field is required</p>
+        )}
 
         <Button className="mt-6 w-full border border-black hover:bg-white hover:text-black duration-200">
-          Login
+          Sign up
         </Button>
       </form>
       <p className="text-center my-2">
-        New here?{" "}
-        <Link className="text-blue-500" href={"/signup"}>
-          Sign up
+        Already have an account?
+        <Link className="text-blue-500 ml-1" href={"/login"}>
+          Login
         </Link>
       </p>
       <p className="text-center mb-2 relative before:content-[''] before:bg-gray-300 before:w-full before:h-[2px] before:absolute before:left-0 before:top-1/2 before:-z-10">
@@ -73,4 +120,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default SignupForm;
