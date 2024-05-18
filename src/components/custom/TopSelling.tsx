@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 
 interface CardItems {
+  id:number,
   image: StaticImageData;
   title: string;
   rating: number;
@@ -14,24 +15,28 @@ interface CardItems {
 const TopSelling = () => {
   const cards: CardItems[] = [
     {
+      id:1,
       image: cardImg,
       title: "T-Shirt for men",
       rating: 4.5,
       price: 20,
     },
     {
+      id:2,
       image: cardImg,
       title: "Shirt  for men",
       rating: 5,
       price: 20,
     },
     {
+      id:3,
       image: cardImg,
       title: "Denim  for men",
       rating: 4.5,
       price: 24,
     },
     {
+      id:4,
       image: cardImg,
       title: "Checked Shirt  for men",
       rating: 4,
@@ -50,7 +55,7 @@ const TopSelling = () => {
       </div>
 
       <div className="mt-8 text-center w-full">
-        <Link className="  inline-block " href={"#"}>
+        <Link className="  inline-block " href={"/products"}>
           <Button variant={"outline"} className="px-10 rounded-full">
             View All
           </Button>

@@ -11,6 +11,7 @@ import Link from "next/link";
 import { FaStar } from "react-icons/fa";
 
 interface CardItems {
+  id:number,
   image: StaticImageData;
   title: string;
   rating: number;
@@ -21,7 +22,7 @@ type CardItemProp = {
   cardItem: CardItems;
 };
 const ProductCard = ({ cardItem }: CardItemProp) => {
-  const { image, title, rating, price } = cardItem;
+  const { id,image, title, rating, price } = cardItem;
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => (
@@ -32,7 +33,7 @@ const ProductCard = ({ cardItem }: CardItemProp) => {
     ));
   };
   return (
-    <Link href={"#"}>
+    <Link href={`/products/${id}`}>
       <Card>
         <CardHeader>
           <Image src={image} alt="card image" />
