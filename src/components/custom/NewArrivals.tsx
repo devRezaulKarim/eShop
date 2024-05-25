@@ -1,36 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-import { StaticImageData } from "next/image";
-import cardImg from "@/assets/t-shirt.jpg";
 import ProductCard from "./ProductCard";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import { useEffect, useState } from "react";
 import { fetchProducts } from "@/redux/slices/productsSlice";
+import { Product } from "@/lib/productType";
 
-type Review = {
-  username: string;
-  comment: string;
-  rating: number;
-};
-interface Product {
-  id: number;
-  title: string;
-  brand: string;
-  description: string;
-  size: string[];
-  color: string[];
-  price: number;
-  thumbnail: string;
-  images: string[];
-  category: string;
-  style: string;
-  search: string[];
-  stock: number;
-  ratings: number;
-  reviews: Review[];
-}
 const NewArrivals = () => {
   const { products } = useAppSelector((state) => state.products);
   const [newArrivals, setNewArrivals] = useState<Product[]>([]);

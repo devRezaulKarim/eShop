@@ -6,37 +6,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Image, { StaticImageData } from "next/image";
+import { Product } from "@/lib/productType";
+import Image from "next/image";
 import Link from "next/link";
 import { FaStar } from "react-icons/fa";
 
-type Review = {
-  username: string;
-  comment: string;
-  rating: number;
-};
-interface Product {
-  id: number;
-  title: string;
-  brand: string;
-  description: string;
-  size: string[];
-  color: string[];
-  price: number;
-  thumbnail: string;
-  images: string[];
-  category: string;
-  style: string;
-  search: string[];
-  stock: number;
-  ratings: number;
-  reviews: Review[];
-}
 type ProductProp = {
   product: Product;
 };
 const ProductCard = ({ product }: ProductProp) => {
-  const { thumbnail, title, ratings, price } = product;
+  const { id, thumbnail, title, ratings, price } = product;
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => (
@@ -47,11 +26,11 @@ const ProductCard = ({ product }: ProductProp) => {
     ));
   };
   return (
-    <Link href={"#"}>
+    <Link href={`/products/${id}`}>
       <Card className="h-96">
         <CardHeader className="h-[70%]">
           <Image
-            className="m-auto"
+            className=" w-full h-56 object-contain"
             src={thumbnail}
             alt="card image"
             width={130}

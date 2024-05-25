@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/custom/Navbar";
 import Footer from "@/components/custom/Footer";
 import StoreProvider from "@/redux/provider/Provider";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
