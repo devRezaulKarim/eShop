@@ -7,7 +7,7 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa6";
 import { IoMdLogIn } from "react-icons/io";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MobileNavLinks from "./MobileNavLinks";
 
 import {
@@ -21,18 +21,42 @@ const Navbar = () => {
   const [isOpenMobileSearch, setIsOpenMobileSearch] = useState<boolean>(false);
   const [isOpenMobileNavLinks, setIsOpenMobileNavLinks] =
     useState<boolean>(false);
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
   const [user, setUser] = useState<boolean>(false);
 
-  const navLinks: string[] = ["shop", "on sale", "new arrivals", "brands"];
+  const navLinks: string[] = ["products", "new arrivals", "brands"];
 
   const handleOpenMobileSearch = () => {
     setIsOpenMobileNavLinks(false);
     setIsOpenMobileSearch(!isOpenMobileSearch);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      if (scrollTop > 80) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  });
+
   return (
-    <nav className="container py-2 lg:py-4">
+    <nav
+      className={`container py-2 lg:py-4 h-20 duration-200 ${
+        isScrolled
+          ? "fixed bg-darkGray text-white left-1/2 -translate-x-1/2 z-50 rounded-full shadow w-[90%] lg:w-[80%] mt-1 h-12 lg:h-16 lg:py-[11px]"
+          : ""
+      }`}
+    >
       <div className="flex items-center gap-6 lg:gap-10 relative">
         <div className="lg:hidden">
           <MobileNavLinks

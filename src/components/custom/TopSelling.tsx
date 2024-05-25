@@ -20,7 +20,7 @@ const TopSelling = () => {
       <h2 className="uppercase text-2xl lg:text-4xl text-center font-black">
         Top Selling
       </h2>
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mt-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
         {topSelling.slice(0, 4).map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

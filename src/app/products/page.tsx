@@ -1,3 +1,5 @@
+import Products from "@/components/custom/Products";
+
 type metadata = {
   title: string;
   description?: string;
@@ -7,7 +9,11 @@ export const metadata: metadata = {
 };
 
 const products = () => {
-  return <section className="container">products</section>;
+  return (
+    <section className="container">
+      <Products />
+    </section>
+  );
 };
 
 export default products;

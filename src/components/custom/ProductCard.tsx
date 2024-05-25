@@ -26,7 +26,7 @@ const ProductCard = ({ product }: ProductProp) => {
     ));
   };
   return (
-    <Link href={`/products/${id}`}>
+    <Link className="hover:scale-105 duration-200" href={`/products/${id}`}>
       <Card className="h-96">
         <CardHeader className="h-[70%]">
           <Image
