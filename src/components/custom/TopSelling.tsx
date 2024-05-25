@@ -1,51 +1,50 @@
-import { StaticImageData } from "next/image";
-import cardImg from "@/assets/t-shirt.jpg";
+"use client";
 import ProductCard from "./ProductCard";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { useAppSelector } from "@/redux/hooks/hooks";
+import { useEffect, useState } from "react";
 
-interface CardItems {
-  image: StaticImageData;
-  title: string;
+type Review = {
+  username: string;
+  comment: string;
   rating: number;
+};
+interface Product {
+  id: number;
+  title: string;
+  brand: string;
+  description: string;
+  size: string[];
+  color: string[];
   price: number;
+  thumbnail: string;
+  images: string[];
+  category: string;
+  style: string;
+  search: string[];
+  stock: number;
+  ratings: number;
+  reviews: Review[];
 }
 
 const TopSelling = () => {
-  const cards: CardItems[] = [
-    {
-      image: cardImg,
-      title: "T-Shirt for men",
-      rating: 4.5,
-      price: 20,
-    },
-    {
-      image: cardImg,
-      title: "Shirt  for men",
-      rating: 5,
-      price: 20,
-    },
-    {
-      image: cardImg,
-      title: "Denim  for men",
-      rating: 4.5,
-      price: 24,
-    },
-    {
-      image: cardImg,
-      title: "Checked Shirt  for men",
-      rating: 4,
-      price: 19,
-    },
-  ];
+  const { products } = useAppSelector((state) => state.products);
+  const [topSelling, setTopSelling] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const newArrivals = [...products];
+    setTopSelling(newArrivals.sort((a, b) => a.stock - b.stock));
+  }, [products]);
+
   return (
     <section className="container py-10 lg:border-t">
       <h2 className="uppercase text-2xl lg:text-4xl text-center font-black">
         Top Selling
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mt-6">
-        {cards.map((card) => (
-          <ProductCard key={card.title} cardItem={card} />
+        {topSelling.slice(0, 4).map((product) => (
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
 
