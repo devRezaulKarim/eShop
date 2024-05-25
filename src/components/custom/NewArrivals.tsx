@@ -56,7 +56,7 @@ const NewArrivals = () => {
       </div>
 
       <div className="mt-8 text-center w-full">
-        <Link className=" inline-block " href={"#"}>
+        <Link className=" inline-block " href={"/products"}>
           <Button variant={"outline"} className="px-10 rounded-full">
             View All
           </Button>
