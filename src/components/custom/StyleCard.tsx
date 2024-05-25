@@ -34,7 +34,7 @@ const StyleCard = ({ style, id }: StyleCardProp) => {
           ? "lg:col-span-2"
           : "lg:col-span-2"
       }`}
-      href={"#"}
+      href={"/products"}
     >
       <Card>
         <CardContent className="h-48 overflow-hidden relative">
