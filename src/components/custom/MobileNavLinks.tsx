@@ -21,7 +21,7 @@ const MobileNavLinks = ({
   };
   return (
     <>
-      <button onClick={handleMobileMenuToggle} className="text-xl">
+      <button onClick={handleMobileMenuToggle} className="text-xl mt-1">
         {isOpenMobileNavLinks ? <FaXmark /> : <FaBars />}
       </button>
       <ul

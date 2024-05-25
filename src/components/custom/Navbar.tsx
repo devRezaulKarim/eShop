@@ -51,10 +51,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`container py-2 lg:py-4 h-20 duration-200 ${
+      className={`container py-2 lg:py-4 duration-200 ${
         isScrolled
-          ? "fixed bg-darkGray text-white left-1/2 -translate-x-1/2 z-50 rounded-full shadow-lg shadow-black w-[90%] lg:w-[80%] mt-1 h-12 md:h-12 lg:h-16 lg:py-[11px]"
-          : ""
+          ? "fixed bg-darkGray text-white left-1/2 -translate-x-1/2 z-50 rounded-full shadow-lg shadow-black w-[90%] lg:w-[80%] mt-1 lg:py-[11px]"
+          : "h-20"
       }`}
     >
       <div className="flex items-center gap-6 lg:gap-10 relative">
