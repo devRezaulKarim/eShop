@@ -7,11 +7,14 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import { useEffect, useState } from "react";
 import { fetchProducts } from "@/redux/slices/productsSlice";
 import { Product } from "@/lib/productType";
+import LoadingCardSkeleton from "@/lib/loadingCardSkeleton";
 
 const NewArrivals = () => {
-  const { products } = useAppSelector((state) => state.products);
+  const { isLoading, products } = useAppSelector((state) => state.products);
   const [newArrivals, setNewArrivals] = useState<Product[]>([]);
   const dispatch = useAppDispatch();
+  const loadingSkeletons = Array.from({ length: 4 });
+
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
@@ -27,9 +30,13 @@ const NewArrivals = () => {
         New Arrivals
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
-        {newArrivals.slice(0, 4).map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+        {isLoading || newArrivals.length <= 0
+          ? loadingSkeletons.map((_, i) => <LoadingCardSkeleton key={i} />)
+          : newArrivals
+              .slice(0, 4)
+              .map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
       </div>
 
       <div className="mt-8 text-center w-full">

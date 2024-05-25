@@ -5,10 +5,12 @@ import { Button } from "../ui/button";
 import { useAppSelector } from "@/redux/hooks/hooks";
 import { useEffect, useState } from "react";
 import { Product } from "@/lib/productType";
+import LoadingCardSkeleton from "@/lib/loadingCardSkeleton";
 
 const TopSelling = () => {
-  const { products } = useAppSelector((state) => state.products);
+  const { isLoading, products } = useAppSelector((state) => state.products);
   const [topSelling, setTopSelling] = useState<Product[]>([]);
+  const loadingSkeletons = Array.from({ length: 4 });
 
   useEffect(() => {
     const newArrivals = [...products];
@@ -21,9 +23,13 @@ const TopSelling = () => {
         Top Selling
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
-        {topSelling.slice(0, 4).map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+        {isLoading || topSelling.length <= 0
+          ? loadingSkeletons.map((_, i) => <LoadingCardSkeleton key={i} />)
+          : topSelling
+              .slice(0, 4)
+              .map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
       </div>
 
       <div className="mt-8 text-center w-full">

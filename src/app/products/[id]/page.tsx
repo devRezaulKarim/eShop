@@ -22,7 +22,7 @@ const getSingleData = async (id: any) => {
 
 const productDetails = async ({ params }: any) => {
   const product = await getSingleData(params.id);
-  console.log(product);
+
   return (
     <section className="container">
       <ProductDetails product={product} />

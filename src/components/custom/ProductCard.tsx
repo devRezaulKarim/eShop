@@ -21,7 +21,9 @@ const ProductCard = ({ product }: ProductProp) => {
     return Array.from({ length: 5 }, (_, index) => (
       <FaStar
         key={index}
-        className={index < rating ? "text-yellow-500" : "text-gray-300"}
+        className={
+          index < Math.round(rating) ? "text-yellow-500" : "text-gray-300"
+        }
       />
     ));
   };
